@@ -1,0 +1,29 @@
+server:
+  servlet:
+    contextPath: /mydemo
+cors:
+  originPatterns: https://dev.frontend.com,http://localhost:8000
+
+spring:
+  application:
+    name: mydemo
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    hikari:
+      maximum-pool-size: 16
+      auto-commit: false
+      connection-timeout: 10000
+      idle-timeout: 60000
+      minimum-idle: 2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.lob.non_contextual_creation: true
+  liquibase:
+    change-log: classpath:db/changelog/main-changelog.xml
